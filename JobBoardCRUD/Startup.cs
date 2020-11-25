@@ -26,6 +26,16 @@ namespace JobBoardCRUD
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(options => 
+            {
+                options.SwaggerDoc("v1", 
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    { 
+                        Title = "JobBoardCRUD API",
+                        Description = "Job Board Application",
+                        Version = "v1"
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +55,11 @@ namespace JobBoardCRUD
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "JobBoardCRUD");
             });
         }
     }
