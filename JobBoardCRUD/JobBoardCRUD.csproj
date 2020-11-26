@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JobBoardCRUD.Application\JobBoardCRUD.Application.csproj" />
     <ProjectReference Include="..\JobBoardCRUD.DataAccess\JobBoardCRUD.DataAccess.csproj" />
   </ItemGroup>
 

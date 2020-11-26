@@ -1,14 +1,21 @@
-﻿using JobBoardCRUD.Domain.Abstractions;
+﻿using JobBoardCRUD.DataAccess.Models;
+using JobBoardCRUD.Domain.Abstractions;
 using JobBoardCRUD.Models.Entities;
 using JobBoardCRUD.Models.Generics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace JobBoardCRUD.DataAccess.Repositories
 {
-    public class JobRepository : IJobCRUD
+    public class JobCRUDRepository : IJobCRUD
     {
+        private readonly MyDbContext _context;
+        public JobCRUDRepository(MyDbContext context)
+        {
+            _context = context;
+        }
         public JobInfo CreateJob(JobInfo jobInfo)
         {
             return jobInfo;
@@ -21,6 +28,22 @@ namespace JobBoardCRUD.DataAccess.Repositories
 
         public List<JobInfo> ListJobs()
         {
+            List<JobInfo> jobs = new List<JobInfo>();
+
+
+            jobs = (from j in _context.Job
+                      select new JobInfo()
+                      { 
+                        JobNumber = j.Id,
+                        JobTitlePosition = j.JobTitle,
+                        JobDescription = j.Description,
+                        CreatedAt = j.CreatedAt,
+                        ExpiresAt = j.ExpiresAt
+
+                      }).ToList();
+            
+            return jobs;
+
             throw new NotImplementedException();
         }
 
