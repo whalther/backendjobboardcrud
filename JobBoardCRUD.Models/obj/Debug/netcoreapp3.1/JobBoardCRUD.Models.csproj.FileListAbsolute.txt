@@ -1,0 +1,9 @@
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\bin\Debug\netcoreapp3.1\JobBoardCRUD.Models.deps.json
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\bin\Debug\netcoreapp3.1\JobBoardCRUD.Models.dll
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\bin\Debug\netcoreapp3.1\JobBoardCRUD.Models.pdb
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\obj\Debug\netcoreapp3.1\JobBoardCRUD.Models.csprojAssemblyReference.cache
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\obj\Debug\netcoreapp3.1\JobBoardCRUD.Models.AssemblyInfoInputs.cache
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\obj\Debug\netcoreapp3.1\JobBoardCRUD.Models.AssemblyInfo.cs
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\obj\Debug\netcoreapp3.1\JobBoardCRUD.Models.csproj.CoreCompileInputs.cache
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\obj\Debug\netcoreapp3.1\JobBoardCRUD.Models.dll
+C:\Users\walter.zetino\source\repos\JobBoardCRUD\JobBoardCRUD.Models\obj\Debug\netcoreapp3.1\JobBoardCRUD.Models.pdb

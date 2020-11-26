@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JobBoardCRUD.DataAccess\JobBoardCRUD.DataAccess.csproj" />
+    <ProjectReference Include="..\JobBoardCRUD.Domain\JobBoardCRUD.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
