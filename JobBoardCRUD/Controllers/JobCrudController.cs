@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using JobBoardCRUD.Application;
 using JobBoardCRUD.DataAccess.Models;
 using JobBoardCRUD.Models.Entities;
 using JobBoardCRUD.Models.Generics;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -105,6 +102,39 @@ namespace JobBoardCRUD.Controllers
                     status = "ok",
                     code = 200,
                     message = "Updated",
+                    data = jobData
+                };
+            }
+            catch (Exception e)
+            {
+
+                result = new Result()
+                {
+                    status = "error",
+                    code = 500,
+                    message = e.InnerException.Message
+                };
+            }
+
+            return result;
+        }
+        [HttpPost]
+        [Route("DeleteJob")]
+        public Result DeleteJob(JobInfo jobInfo)
+        {
+            Result result = new Result();
+            try
+            {
+
+                JobCrudApp jobCrudApp = new JobCrudApp(_context);
+                JobInfo jobInfoResult = jobCrudApp.DeleteJob(jobInfo);
+                Dictionary<string, object> jobData = new Dictionary<string, object>();
+                jobData.Add("job", jobInfoResult);
+                result = new Result()
+                {
+                    status = "ok",
+                    code = 200,
+                    message = "Deleted",
                     data = jobData
                 };
             }

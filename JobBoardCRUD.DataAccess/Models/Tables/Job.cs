@@ -11,5 +11,6 @@ namespace JobBoardCRUD.DataAccess.Models.Tables
         public string Description { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ExpiresAt { get; set; }
+        public bool JobStatus { get; set; }
     }
 }

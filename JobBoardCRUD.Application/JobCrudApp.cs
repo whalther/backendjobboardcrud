@@ -37,5 +37,12 @@ namespace JobBoardCRUD.Application
 
             return jobService.UpdateJob(jobRepo, jobInfo);
         }
+        public JobInfo DeleteJob(JobInfo jobInfo)
+        {
+            IJobCRUD jobRepo = new JobCRUDRepository(_context);
+            JobCRUDService jobService = new JobCRUDService();
+
+            return jobService.DeleteJob(jobRepo, jobInfo);
+        }
     }
 }

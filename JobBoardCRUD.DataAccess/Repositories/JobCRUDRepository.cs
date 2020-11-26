@@ -16,28 +16,7 @@ namespace JobBoardCRUD.DataAccess.Repositories
         public JobCRUDRepository(MyDbContext context)
         {
             _context = context;
-        }
-        public JobInfo CreateJob(JobInfo jobInfo)
-        {
-            Job job = new Job() 
-            {
-                JobTitle = jobInfo.JobTitlePosition,
-                Description = jobInfo.JobDescription,
-                CreatedAt = DateTime.Now,
-                ExpiresAt = jobInfo.ExpiresAt
-            };
-            _context.Job.Add(job);
-            _context.SaveChanges();
-            jobInfo.CreatedAt = job.CreatedAt;
-            jobInfo.JobNumber = job.Id;
-
-            return jobInfo;
-        }
-
-        public JobInfo DeleteJob(JobInfo jobInfo)
-        {
-            return jobInfo;
-        }
+        }     
 
         public List<JobInfo> ListJobs()
         {
@@ -45,6 +24,7 @@ namespace JobBoardCRUD.DataAccess.Repositories
 
 
             jobs = (from j in _context.Job
+                      where j.JobStatus == true
                       select new JobInfo()
                       { 
                         JobNumber = j.Id,
@@ -59,7 +39,22 @@ namespace JobBoardCRUD.DataAccess.Repositories
 
             throw new NotImplementedException();
         }
+        public JobInfo CreateJob(JobInfo jobInfo)
+        {
+            Job job = new Job()
+            {
+                JobTitle = jobInfo.JobTitlePosition,
+                Description = jobInfo.JobDescription,
+                CreatedAt = DateTime.Now,
+                ExpiresAt = jobInfo.ExpiresAt
+            };
+            _context.Job.Add(job);
+            _context.SaveChanges();
+            jobInfo.CreatedAt = job.CreatedAt;
+            jobInfo.JobNumber = job.Id;
 
+            return jobInfo;
+        }
         public JobInfo UpdateJob(JobInfo jobInfo)
         {
             Job jobFound = _context.Job.Where(c => c.Id == jobInfo.JobNumber).FirstOrDefault();
@@ -72,5 +67,16 @@ namespace JobBoardCRUD.DataAccess.Repositories
             }
             return jobInfo;
         }
+        public JobInfo DeleteJob(JobInfo jobInfo)
+        {
+            Job jobFound = _context.Job.Where(c => c.Id == jobInfo.JobNumber).FirstOrDefault();
+            if (jobFound != null)
+            {
+                jobFound.JobStatus = false;
+                _context.SaveChanges();
+            }
+            return jobInfo;
+        }
+
     }
 }
