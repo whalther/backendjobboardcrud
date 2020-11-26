@@ -23,5 +23,11 @@
     <ProjectReference Include="..\JobBoardCRUD.DataAccess\JobBoardCRUD.DataAccess.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>228f7b50-9ae8-4c17-85f1-3cccd26ac0a7</UserSecretsId>
+  </PropertyGroup>
+
 
 </Project>

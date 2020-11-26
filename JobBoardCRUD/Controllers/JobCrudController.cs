@@ -21,8 +21,8 @@ namespace JobBoardCRUD.Controllers
             Configuration = configuration;
         }
         [HttpGet]
-        [Route("Jobs")]
-        public Result Jobs()
+        [Route("ListJobs")]
+        public Result ListJobs()
         {
             Result result = new Result();
             try
@@ -118,6 +118,12 @@ namespace JobBoardCRUD.Controllers
 
             return result;
         }
+
+        /// <summary>
+        /// Deactivate a Job, just the ID(jobNumber) is required
+        /// </summary>
+        /// <param name="jobInfo"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("DeleteJob")]
         public Result DeleteJob(JobInfo jobInfo)

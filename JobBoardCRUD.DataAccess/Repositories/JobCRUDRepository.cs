@@ -25,6 +25,7 @@ namespace JobBoardCRUD.DataAccess.Repositories
 
             jobs = (from j in _context.Job
                       where j.JobStatus == true
+                      orderby j.Id descending
                       select new JobInfo()
                       { 
                         JobNumber = j.Id,
@@ -45,8 +46,9 @@ namespace JobBoardCRUD.DataAccess.Repositories
             {
                 JobTitle = jobInfo.JobTitlePosition,
                 Description = jobInfo.JobDescription,
-                CreatedAt = DateTime.Now,
-                ExpiresAt = jobInfo.ExpiresAt
+                CreatedAt = jobInfo.CreatedAt,
+                ExpiresAt = jobInfo.ExpiresAt,
+                JobStatus = true
             };
             _context.Job.Add(job);
             _context.SaveChanges();
