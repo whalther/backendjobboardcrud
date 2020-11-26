@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using JobBoardCRUD.DataAccess.Models.Tables;
 
 namespace JobBoardCRUD.DataAccess.Repositories
 {
@@ -18,6 +19,18 @@ namespace JobBoardCRUD.DataAccess.Repositories
         }
         public JobInfo CreateJob(JobInfo jobInfo)
         {
+            Job job = new Job() 
+            {
+                JobTitle = jobInfo.JobTitlePosition,
+                Description = jobInfo.JobDescription,
+                CreatedAt = DateTime.Now,
+                ExpiresAt = jobInfo.ExpiresAt
+            };
+            _context.Job.Add(job);
+            _context.SaveChanges();
+            jobInfo.CreatedAt = job.CreatedAt;
+            jobInfo.JobNumber = job.Id;
+
             return jobInfo;
         }
 

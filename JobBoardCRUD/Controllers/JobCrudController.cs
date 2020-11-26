@@ -55,5 +55,38 @@ namespace JobBoardCRUD.Controllers
 
             return result;
         }
+        [HttpPost]
+        [Route("CreateJob")]
+        public Result CreateJob(JobInfo jobInfo)
+        {
+            Result result = new Result();
+            try
+            {
+
+                JobCrudApp jobCrudApp = new JobCrudApp(_context);
+                JobInfo jobInfoResult = jobCrudApp.CreateJob(jobInfo);
+                Dictionary<string, object> jobData= new Dictionary<string, object>();
+                jobData.Add("job", jobInfoResult);
+                result = new Result()
+                {
+                    status = "ok",
+                    code = 200,
+                    message = "Created",
+                    data = jobData
+                };
+            }
+            catch (Exception e)
+            {
+
+                result = new Result()
+                {
+                    status = "error",
+                    code = 500,
+                    message = e.InnerException.Message
+                };
+            }
+
+            return result;
+        }
     }
 }
