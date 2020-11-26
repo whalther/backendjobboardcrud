@@ -30,5 +30,12 @@ namespace JobBoardCRUD.Application
 
             return jobService.CreateJob(jobRepo, jobInfo);
         }
+        public JobInfo UpdateJob(JobInfo jobInfo)
+        {
+            IJobCRUD jobRepo = new JobCRUDRepository(_context);
+            JobCRUDService jobService = new JobCRUDService();
+
+            return jobService.UpdateJob(jobRepo, jobInfo);
+        }
     }
 }

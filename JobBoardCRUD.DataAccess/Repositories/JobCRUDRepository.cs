@@ -62,6 +62,14 @@ namespace JobBoardCRUD.DataAccess.Repositories
 
         public JobInfo UpdateJob(JobInfo jobInfo)
         {
+            Job jobFound = _context.Job.Where(c => c.Id == jobInfo.JobNumber).FirstOrDefault();
+            if (jobFound != null)
+            {
+                jobFound.JobTitle = jobInfo.JobTitlePosition;
+                jobFound.Description = jobInfo.JobDescription;
+                jobFound.ExpiresAt = jobInfo.ExpiresAt;
+                _context.SaveChanges();
+            }
             return jobInfo;
         }
     }
