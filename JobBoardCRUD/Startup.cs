@@ -102,7 +102,7 @@ namespace JobBoardCRUD
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/backend/swagger/v1/swagger.json", "JobBoardCRUD");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "JobBoardCRUD");
             });
         }
     }
