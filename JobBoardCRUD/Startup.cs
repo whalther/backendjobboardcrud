@@ -64,6 +64,7 @@ namespace JobBoardCRUD
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDeveloperExceptionPage();
             app.Use(async (context, next) =>
             {
                 //context.Response.Headers.Add("X-Xss-Protection", "1");
@@ -101,7 +102,7 @@ namespace JobBoardCRUD
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "JobBoardCRUD");
+                options.SwaggerEndpoint("/backend/swagger/v1/swagger.json", "JobBoardCRUD");
             });
         }
     }

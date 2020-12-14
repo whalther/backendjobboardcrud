@@ -64,6 +64,7 @@ namespace JobBoardCRUD.DataAccess.Repositories
             {
                 jobFound.JobTitle = jobInfo.JobTitlePosition;
                 jobFound.Description = jobInfo.JobDescription;
+                jobFound.CreatedAt = jobInfo.CreatedAt;
                 jobFound.ExpiresAt = jobInfo.ExpiresAt;
                 _context.SaveChanges();
             }
